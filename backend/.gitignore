@@ -1,0 +1,42 @@
+# Local Env Files
+.env
+.env.local
+.env.*.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.iml
+
+# Dependencies
+node_modules
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build
+dist/
+build/
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Nodemon
+.nodemon.json
+
+# Firebase Service Account Keys (NEVER commit these)
+*-firebase-adminsdk-*.json
+serviceAccountKey.json
