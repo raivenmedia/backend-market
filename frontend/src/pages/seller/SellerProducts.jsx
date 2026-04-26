@@ -9,6 +9,7 @@ export const SellerProducts = () => {
     title: '',
     description: '',
     price: '',
+    currency: 'ZMW',
     category: 'Electronics',
     stock: '',
   });
@@ -60,6 +61,7 @@ export const SellerProducts = () => {
         title: '',
         description: '',
         price: '',
+        currency: 'ZMW',
         category: 'Electronics',
         stock: '',
       });
@@ -131,17 +133,31 @@ export const SellerProducts = () => {
                 </select>
               </div>
 
-              <div>
-                <label className="block text-gray-700 font-semibold mb-2">Price *</label>
-                <input
-                  type="number"
-                  step="0.01"
-                  name="price"
-                  value={formData.price}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-gray-900 focus:border-transparent"
-                  required
-                />
+              <div className="grid grid-cols-3 gap-2">
+                <div className="col-span-2">
+                  <label className="block text-gray-700 font-semibold mb-2">Price *</label>
+                  <input
+                    type="number"
+                    step="0.01"
+                    name="price"
+                    value={formData.price}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-gray-900 focus:border-transparent"
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="block text-gray-700 font-semibold mb-2">Currency</label>
+                  <select
+                    name="currency"
+                    value={formData.currency}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-gray-900 focus:border-transparent"
+                  >
+                    <option value="ZMW">ZMW</option>
+                    <option value="USD">USD</option>
+                  </select>
+                </div>
               </div>
 
               <div>
@@ -226,7 +242,9 @@ export const SellerProducts = () => {
                 <h3 className="font-bold text-lg text-gray-900 mb-1">{product.title}</h3>
                 <p className="text-gray-500 text-sm mb-3">{product.category}</p>
                 <div className="flex justify-between items-center mb-4">
-                  <p className="text-gray-900 font-bold text-xl">${product.price.toFixed(2)}</p>
+                  <p className="text-gray-900 font-bold text-xl">
+                    {product.currency === 'USD' ? '$' : 'K'}{product.price.toFixed(2)}
+                  </p>
                   <p className="text-gray-500 text-sm">Stock: {product.stock}</p>
                 </div>
                 <div className="mt-auto flex gap-2 pt-4 border-t border-gray-100">

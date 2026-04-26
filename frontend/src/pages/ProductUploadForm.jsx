@@ -11,6 +11,7 @@ export const ProductUploadForm = () => {
     category: '',
     subcategory: '',
     price: '',
+    currency: 'ZMW',
     description: '',
     condition: 'new',
     productState: 'Brand New',
@@ -121,6 +122,7 @@ export const ProductUploadForm = () => {
       productData.append('category', formData.category);
       productData.append('subcategory', formData.subcategory);
       productData.append('price', parseFloat(formData.price));
+      productData.append('currency', formData.currency);
       productData.append('description', formData.description.trim());
       productData.append('condition', formData.condition);
       productData.append('productState', formData.productState);
@@ -228,21 +230,37 @@ export const ProductUploadForm = () => {
             </div>
           </div>
 
-          {/* Price */}
-          <div>
-            <label className="block text-sm font-semibold text-gray-900 mb-2">
-              Price (USD)
-            </label>
-            <input
-              type="number"
-              name="price"
-              value={formData.price}
-              onChange={handleInputChange}
-              placeholder="0.00"
-              step="0.01"
-              min="0"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 transition-all"
-            />
+          {/* Price & Currency */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div className="md:col-span-3">
+              <label className="block text-sm font-semibold text-gray-900 mb-2">
+                Price
+              </label>
+              <input
+                type="number"
+                name="price"
+                value={formData.price}
+                onChange={handleInputChange}
+                placeholder="0.00"
+                step="0.01"
+                min="0"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 transition-all"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-semibold text-gray-900 mb-2">
+                Currency
+              </label>
+              <select
+                name="currency"
+                value={formData.currency}
+                onChange={handleInputChange}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 transition-all"
+              >
+                <option value="ZMW">ZMW (K)</option>
+                <option value="USD">USD ($)</option>
+              </select>
+            </div>
           </div>
 
           {/* Condition & Product State */}

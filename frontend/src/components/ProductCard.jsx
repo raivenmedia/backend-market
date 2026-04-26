@@ -67,7 +67,8 @@ export const ProductCard = ({ product, onAddToCart }) => {
         <div className="flex items-center justify-between mb-3">
           <div>
             <p className="text-lg font-bold text-gray-900">
-              ${product.price?.toFixed(2)}
+              {product.currency === 'ZMW' ? 'K' : '$'}
+              {product.price?.toLocaleString(undefined, { minimumFractionDigits: 2 })}
             </p>
           </div>
         </div>

@@ -16,6 +16,11 @@ const productSchema = new mongoose.Schema(
       required: [true, 'Please provide a price'],
       min: 0,
     },
+    currency: {
+      type: String,
+      enum: ['USD', 'ZMW'],
+      default: 'ZMW',
+    },
     category: {
       type: String,
       required: [true, 'Please select a category'],

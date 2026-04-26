@@ -166,7 +166,8 @@ export const ProductDetailPage = () => {
             <div className="border-t border-b border-gray-200 py-6">
               <div className="space-y-3">
                 <p className="text-5xl font-bold text-gray-900">
-                  ${product.price?.toFixed(2)}
+                  {product.currency === 'ZMW' ? 'K' : '$'}
+                  {product.price?.toLocaleString(undefined, { minimumFractionDigits: 2 })}
                 </p>
                 {product.productState && (
                   <p className="text-gray-600">

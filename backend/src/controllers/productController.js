@@ -105,7 +105,7 @@ exports.createProduct = async (req, res) => {
       return res.status(403).json({ message: 'Your seller account must be approved before publishing products.' });
     }
 
-    const { title, description, price, category, stock } = req.body;
+    const { title, description, price, currency, category, stock } = req.body;
 
     if (!req.file) {
       return res.status(400).json({ message: 'Product image is required' });
@@ -118,6 +118,7 @@ exports.createProduct = async (req, res) => {
       title,
       description,
       price,
+      currency: currency || 'ZMW',
       category,
       imageUrl: result.secure_url,
       cloudinaryId: result.public_id,
@@ -150,6 +151,7 @@ exports.updateProduct = async (req, res) => {
     }
 
     const updates = { ...req.body };
+    if (req.body.currency) updates.currency = req.body.currency;
 
     // If there is a new image file, handle upload and delete old
     if (req.file) {
